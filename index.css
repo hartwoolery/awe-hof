@@ -1,0 +1,14 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden; /* Prevents scrolling */
+}
+
+#canvas {
+    width: 100vw;  /* Viewport width */
+    height: 100vh; /* Viewport height */
+    position: fixed; /* Ensures it covers the full screen */
+    top: 0;
+    left: 0;
+}
