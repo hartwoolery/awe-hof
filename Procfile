@@ -1,1 +1,1 @@
-web: node scripts/heroku-start.cjs
+web: bin/start-nginx-solo
