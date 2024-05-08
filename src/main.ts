@@ -36,7 +36,7 @@ import { bootstrapCameraKit, createMediaStreamSource } from '@snap/camera-kit'
 
   await session.applyLens(lens);
 
-  let live = session.output.live;
+  //let live = session.output.live;
   //let ratio = live.width/live.height;
   await source.setRenderSize(liveRenderTarget.width , liveRenderTarget.height);
   //console.log(window.innerWidth * ratio, window.innerHeight)
