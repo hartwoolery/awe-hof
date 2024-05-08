@@ -24,12 +24,7 @@ import { bootstrapCameraKit, createMediaStreamSource } from '@snap/camera-kit'
   await session.setSource(source);
   
 
-
-  //
-
   await session.play();
-
-  console.log("sdfa")
 
 
   var lens = await cameraKit.lensRepository.loadLens(
@@ -43,7 +38,7 @@ import { bootstrapCameraKit, createMediaStreamSource } from '@snap/camera-kit'
 
   let live = session.output.live;
   let ratio = live.width/live.height;
-  await source.setRenderSize(window.innerWidth * ratio, window.innerHeight);
-  console.log(window.innerWidth * ratio, window.innerHeight)
+  await source.setRenderSize(liveRenderTarget.width , liveRenderTarget.height);
+  //console.log(window.innerWidth * ratio, window.innerHeight)
 })();
 

@@ -7,7 +7,7 @@ html, body {
 
 #canvas {
     width: 100vw;  /* Viewport width */
-    height: 100vh; /* Viewport height */
+    height: 100svh; /* Viewport height */
     position: fixed; /* Ensures it covers the full screen */
     top: 0;
     left: 0;
