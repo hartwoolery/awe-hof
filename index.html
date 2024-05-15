@@ -3,11 +3,57 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Camera Kit Web App</title>
+    <title>AWE Hall of Fame Experience</title>
     <link rel="stylesheet" href="index.css">
   </head>
   <body>
-    <canvas id="canvas"></canvas>
+    <canvas id="canvas1"></canvas>
+    <div id="display_name"></div>
+    <div id="my-login-button-target"></div>
+    <div id="logger"></div>
     <script type="module" src="/src/main.ts"></script>
+    <script>
+      var usePush = window.location.hostname == "awe.ngrok.app";
+      if (usePush) {
+        window.snapKitInit = function () {
+          var loginButtonIconId = "my-login-button-target";
+          // Mount Login Button
+          snap.loginkit.mountButton(loginButtonIconId, {
+            clientId: "d74ce25e-a676-4dbb-837e-717bc1e260f2",
+            redirectURI: "https://awe.ngrok.app",
+            scopeList: ["user.display_name", "camkit_lens_push_to_device"],//, "", "snap-studio", "user"],
+            handleResponseCallback: function (n) {
+                  if (n.access_token) {
+                    console.log(n)
+                    console.log("logged in")
+                    if (window.onLogin) {
+
+                      window.onLogin(n.access_token)
+                    }
+                  } else {
+                    console.log(n)
+                }
+              }
+            })
+        }
+      }
+      
+
+      // Load the SDK asynchronously
+      (function (d, s, id) {
+        var usePush = window.location.hostname == "awe.ngrok.app";
+        if (usePush) {
+          var js,
+          sjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s);
+          js.id = id;
+          js.src = "https://sdk.snapkit.com/js/v1/login.js";
+          sjs.parentNode.insertBefore(js, sjs);
+        } 
+
+       
+      })(document, "script", "loginkit-sdk");
+    </script>
   </body>
 </html>

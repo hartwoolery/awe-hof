@@ -5,10 +5,10 @@ html, body {
     overflow: hidden; /* Prevents scrolling */
 }
 
-#canvas {
-    width: 100vw;  /* Viewport width */
-    height: 100svh; /* Viewport height */
-    position: fixed; /* Ensures it covers the full screen */
-    top: 0;
-    left: 0;
+#canvas1 {
+    /*width: 100vw;  /* Viewport width */
+    /*height: 100svh; /* Viewport height */
+    position: absolute; /* Ensures it covers the full screen */
+    z-index: -1;
+    top:0;
 }
