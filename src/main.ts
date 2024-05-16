@@ -98,11 +98,11 @@ function setDebug(text:string) {
     let wWindow = document.documentElement.clientWidth
     let h = document.documentElement.clientHeight
     let w = h * ratio
-    liveRenderTarget.style.position = "absolute"
-    liveRenderTarget.style.width = w + "px";
+    //liveRenderTarget.style.position = "absolute"
+    liveRenderTarget.style.width = "100%"//w + "px";
     liveRenderTarget.style.height = h + "px";
-    liveRenderTarget.style.left = (wWindow - w) * 0.5 + "px"
-    await source.setRenderSize(w, h);
+    //liveRenderTarget.style.left = (wWindow - w) * 0.5 + "px"
+    await source.setRenderSize(wWindow, h);
   }
 
   //console.log(liveRenderTarget.width , liveRenderTarget.height)
