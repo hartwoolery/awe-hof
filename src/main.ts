@@ -97,7 +97,7 @@ function setDebug(text:string) {
     let ratio = live.width/live.height;
     let wWindow = document.documentElement.clientWidth
     let h = document.documentElement.clientHeight
-    let w = h * ratio
+    //let w = h * ratio
     //liveRenderTarget.style.position = "absolute"
     liveRenderTarget.style.width = "100%"//w + "px";
     liveRenderTarget.style.height = h + "px";
