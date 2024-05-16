@@ -43,10 +43,10 @@ function setDebug(text:string) {
     apiToken: 'eyJhbGciOiJIUzI1NiIsImtpZCI6IkNhbnZhc1MyU0hNQUNQcm9kIiwidHlwIjoiSldUIn0.eyJhdWQiOiJjYW52YXMtY2FudmFzYXBpIiwiaXNzIjoiY2FudmFzLXMyc3Rva2VuIiwibmJmIjoxNzEzODEwMjI2LCJzdWIiOiJlMGRkMGUxYy0xMTkyLTRlZjctODAwNi00YmExNmE0NTY2ZTV-U1RBR0lOR34wZGIxMjQ1ZC1mODU1LTQ0ZmItOGY5ZS03NGJkMjg0ZmQyYzAifQ.OSyXHIw-VFwTkiyebO93KHhOCb7JRSlTiEXn_FU0FTE'
   }
 
-  // config.lensCoreOverrideUrls = {
-  //   wasm: 'https://snap-ck-ms-teams.s3.amazonaws.com/lc/LensCoreWebAssembly.wasm',
-  //   js: 'https://snap-ck-ms-teams.s3.amazonaws.com/lc/LensCoreWebAssembly.js',
-  // }
+  config.lensCoreOverrideUrls = {
+    wasm: 'https://snap-ck-ms-teams.s3.amazonaws.com/lc/LensCoreWebAssembly.wasm',
+    js: 'https://snap-ck-ms-teams.s3.amazonaws.com/lc/LensCoreWebAssembly.js',
+  }
 
   const cameraKit = await bootstrapCameraKit(config, extensions);
 
