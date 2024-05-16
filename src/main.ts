@@ -93,8 +93,8 @@ function setDebug(text:string) {
     
     await session.applyLens(lens);
 
-    let live = session.output.live;
-    let ratio = live.width/live.height;
+    //let live = session.output.live;
+    //let ratio = live.width/live.height;
     let wWindow = document.documentElement.clientWidth
     let h = document.documentElement.clientHeight
     //let w = h * ratio
