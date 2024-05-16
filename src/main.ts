@@ -92,15 +92,18 @@ function setDebug(text:string) {
     lens.cameraFacingPreference = 2; //back camera
     
     await session.applyLens(lens);
+
+    let live = session.output.live;
+    let ratio = live.width/live.height;
+    let wWindow = document.documentElement.clientWidth
+    let h = document.documentElement.clientHeight
+    let w = h * ratio
+    liveRenderTarget.style.position = "absolute"
+    liveRenderTarget.style.width = w + "px";
+    liveRenderTarget.style.height = h + "px";
+    liveRenderTarget.style.left = (wWindow - w) * 0.5 + "px"
   }
-  let live = session.output.live;
-  let ratio = live.width/live.height;
-  let wWindow = document.documentElement.clientWidth
-  let h = document.documentElement.clientHeight
-  let w = h * ratio
-  liveRenderTarget.style.width = w + "px";
-  liveRenderTarget.style.height = h + "px";
-  liveRenderTarget.style.left = (wWindow - w) * 0.5 + "px"
+
   //console.log(liveRenderTarget.width , liveRenderTarget.height)
   //await source.setRenderSize(liveRenderTarget.width , liveRenderTarget.height);
   //console.log(window.innerWidth * ratio, window.innerHeight)

@@ -4,11 +4,16 @@ html, body {
     height: 100%;
     overflow: hidden; /* Prevents scrolling */
 }
+#logger {
+    position: absolute;
+    top:0px;
+    padding:10px;
+}
 
 #canvas1 {
     /*width: 100vw;  /* Viewport width */
     /*height: 100svh; /* Viewport height */
-    position: absolute; /* Ensures it covers the full screen */
-    z-index: -1;
-    top:0;
+    /*position: absolute; /* Ensures it covers the full screen */
+    /*z-index: -1;*/
+    top:0px;
 }
