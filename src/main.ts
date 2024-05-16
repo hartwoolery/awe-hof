@@ -102,6 +102,7 @@ function setDebug(text:string) {
     liveRenderTarget.style.width = w + "px";
     liveRenderTarget.style.height = h + "px";
     liveRenderTarget.style.left = (wWindow - w) * 0.5 + "px"
+    await source.setRenderSize(w, h);
   }
 
   //console.log(liveRenderTarget.width , liveRenderTarget.height)
