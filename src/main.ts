@@ -10,7 +10,7 @@ declare global {
 
 const liveRenderTarget = document.getElementById('canvas1') as HTMLCanvasElement;
 const logger = document.getElementById("logger") as HTMLCanvasElement;
-const loading = document.getElementById("loading") as HTMLCanvasElement;
+const loading = document.getElementById("container") as HTMLCanvasElement;
 
 function setDebug(text:string) {
   logger.innerHTML = text
