@@ -8,11 +8,13 @@ declare global {
   }
 }
 
+const liveRenderTarget = document.getElementById('canvas1') as HTMLCanvasElement;
+const logger = document.getElementById("logger") as HTMLCanvasElement;
+const loading = document.getElementById("loading") as HTMLCanvasElement;
+
 function setDebug(text:string) {
-  let button = document.getElementById("logger")
-    if (button) {
-      button.innerHTML = text
-    }
+  logger.innerHTML = text
+   
 }
 
 (async function () {
@@ -50,9 +52,6 @@ function setDebug(text:string) {
 
   const cameraKit = await bootstrapCameraKit(config, extensions);
 
-  const liveRenderTarget = document.getElementById(
-    'canvas1'
-  ) as HTMLCanvasElement;
   const session = await cameraKit.createSession({ liveRenderTarget });
   const stream = await navigator.mediaDevices.getUserMedia({
     video: {
@@ -95,6 +94,9 @@ function setDebug(text:string) {
 
     //let live = session.output.live;
     //let ratio = live.width/live.height;
+  }
+
+  let onResize = async function() {
     let wWindow = document.documentElement.clientWidth
     let h = document.documentElement.clientHeight
     //let w = h * ratio
@@ -104,6 +106,15 @@ function setDebug(text:string) {
     //liveRenderTarget.style.left = (wWindow - w) * 0.5 + "px"
     await source.setRenderSize(wWindow, h);
   }
+
+
+  if (!usePush) {
+    window.addEventListener('resize', onResize, true);
+    onResize()
+    loading.style.display = 'none'
+    liveRenderTarget.style.display = 'block'
+  }
+  
 
   //console.log(liveRenderTarget.width , liveRenderTarget.height)
   //await source.setRenderSize(liveRenderTarget.width , liveRenderTarget.height);
