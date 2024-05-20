@@ -42,7 +42,7 @@ function setDebug(text:string) {
   const extensions = (container: { provides: (arg0: PartialContainer<{ lensSources: LensSource[]; externalMetricsSubject: Subject<Count>; }, {}>) => any; }) => container.provides(push2Web.extension);
 
   var config : any = {
-    apiToken: 'eyJhbGciOiJIUzI1NiIsImtpZCI6IkNhbnZhc1MyU0hNQUNQcm9kIiwidHlwIjoiSldUIn0.eyJhdWQiOiJjYW52YXMtY2FudmFzYXBpIiwiaXNzIjoiY2FudmFzLXMyc3Rva2VuIiwibmJmIjoxNzEzODEwMjI2LCJzdWIiOiJlMGRkMGUxYy0xMTkyLTRlZjctODAwNi00YmExNmE0NTY2ZTV-U1RBR0lOR34wZGIxMjQ1ZC1mODU1LTQ0ZmItOGY5ZS03NGJkMjg0ZmQyYzAifQ.OSyXHIw-VFwTkiyebO93KHhOCb7JRSlTiEXn_FU0FTE'
+    apiToken: 'eyJhbGciOiJIUzI1NiIsImtpZCI6IkNhbnZhc1MyU0hNQUNQcm9kIiwidHlwIjoiSldUIn0.eyJhdWQiOiJjYW52YXMtY2FudmFzYXBpIiwiaXNzIjoiY2FudmFzLXMyc3Rva2VuIiwibmJmIjoxNzEzODEwMjI2LCJzdWIiOiJlMGRkMGUxYy0xMTkyLTRlZjctODAwNi00YmExNmE0NTY2ZTV-UFJPRFVDVElPTn45ODI3ODhmMy0yYWNlLTQ5YWUtODkzMi0yYzYwZDU1NmNkMDYifQ.H8FhJ0mOHmbmB0CqgOhyxuQM5Lp4Md5BfbjS_B9DpcE'
   }
 
   config.lensCoreOverrideUrls = {
