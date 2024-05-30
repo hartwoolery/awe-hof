@@ -1,4 +1,4 @@
-import { Count, LensSource, PartialContainer, bootstrapCameraKit, createMediaStreamSource } from '@snap/camera-kit'
+import { Count, LensSource, LensLaunchData, PartialContainer, bootstrapCameraKit, createMediaStreamSource } from '@snap/camera-kit'
 import { Push2Web } from "@snap/push2web";
 import { Subject } from 'rxjs';
 
@@ -90,7 +90,7 @@ function setDebug(text:string) {
   
     lens.cameraFacingPreference = 2; //back camera
     
-    await session.applyLens(lens);
+    await session.applyLens(lens, {launchParams:{"isWeb":"true"}});
 
     //let live = session.output.live;
     //let ratio = live.width/live.height;
