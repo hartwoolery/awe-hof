@@ -11,11 +11,41 @@ declare global {
 const liveRenderTarget = document.getElementById('canvas1') as HTMLCanvasElement;
 const logger = document.getElementById("logger") as HTMLCanvasElement;
 const loading = document.getElementById("container") as HTMLCanvasElement;
+const logo = document.getElementById("logo") as HTMLCanvasElement;
+const accel = document.getElementById("accel") as HTMLCanvasElement;
 
 function setDebug(text:string) {
   logger.innerHTML = text
    
 }
+
+interface DeviceOrientationEventiOS extends DeviceOrientationEvent {
+  requestPermission?: () => Promise<'granted' | 'denied'>;
+}
+
+
+function onReady() {
+  loading.style.display = 'none'
+  liveRenderTarget.style.display = 'block'
+}
+
+async function checkAccel() {
+  const requestPermission = (DeviceOrientationEvent as unknown as DeviceOrientationEventiOS).requestPermission;
+  const iOS = typeof requestPermission === 'function';
+  if (iOS) {
+      const response = await requestPermission();
+      if (response === 'granted') {
+        console.log("granted")
+        onReady()
+      } else {
+       
+      }
+  } else {
+    console.log("Not iOS")
+    onReady()
+  }
+}
+
 
 (async function () {
   const push2Web = new Push2Web();
@@ -69,7 +99,7 @@ function setDebug(text:string) {
 
   await session.play();
 
-  let usePush = window.location.hostname == "awe.ngrok.app";
+  let usePush = false//window.location.hostname == "awe.ngrok.app";
   
   if (usePush) {
     
@@ -107,12 +137,16 @@ function setDebug(text:string) {
     await source.setRenderSize(wWindow, h);
   }
 
+  
+
+  window.addEventListener("click", checkAccel)
 
   if (!usePush) {
     window.addEventListener('resize', onResize, true);
     onResize()
-    loading.style.display = 'none'
-    liveRenderTarget.style.display = 'block'
+    logo.style.display = 'none'
+    accel.style.display = 'block'
+    
   }
   
 
