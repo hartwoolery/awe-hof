@@ -1,4 +1,4 @@
-import { Count, LensSource, LensLaunchData, PartialContainer, bootstrapCameraKit, createMediaStreamSource } from '@snap/camera-kit'
+import { Count, LensSource, PartialContainer, bootstrapCameraKit, createMediaStreamSource } from '@snap/camera-kit'
 import { Push2Web } from "@snap/push2web";
 import { Subject } from 'rxjs';
 
