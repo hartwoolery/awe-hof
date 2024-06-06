@@ -85,7 +85,9 @@ async function checkAccel() {
   const session = await cameraKit.createSession({ liveRenderTarget });
   const stream = await navigator.mediaDevices.getUserMedia({
     video: {
-      facingMode: "environment"  // This attempts to select the rear-facing camera
+      facingMode: "environment",
+      width: 1920,
+      height: 1080,
     }
   });
 
@@ -126,18 +128,13 @@ async function checkAccel() {
     //let ratio = live.width/live.height;
   }
 
-  let onResize = async function() {
-    let wWindow = document.documentElement.clientWidth
-    let h = document.documentElement.clientHeight
-    //let w = h * ratio
-    //liveRenderTarget.style.position = "absolute"
-    liveRenderTarget.style.width = "100%"//w + "px";
-    liveRenderTarget.style.height = h + "px";
-    //liveRenderTarget.style.left = (wWindow - w) * 0.5 + "px"
-    await source.setRenderSize(wWindow, h);
-  }
+  let onResize = async function () {
+    const dpr = window.devicePixelRatio || 1;
+    const width = window.innerWidth * dpr;
+    const height = window.innerHeight * dpr;
 
-  
+    await source.setRenderSize(width, height);
+  };
 
   window.addEventListener("click", checkAccel)
 
