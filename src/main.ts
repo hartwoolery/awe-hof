@@ -1,4 +1,4 @@
-import { Count, LensSource, PartialContainer, bootstrapCameraKit, createMediaStreamSource } from '@snap/camera-kit'
+import { Count, CameraKit, CameraKitSession, LensSource, PartialContainer, bootstrapCameraKit, createMediaStreamSource } from '@snap/camera-kit'
 import { Push2Web } from "@snap/push2web";
 import { Subject } from 'rxjs';
 
@@ -8,6 +8,8 @@ declare global {
   }
 }
 
+var session:CameraKitSession
+var cameraKit:CameraKit
 const liveRenderTarget = document.getElementById('canvas1') as HTMLCanvasElement;
 const logger = document.getElementById("logger") as HTMLCanvasElement;
 const loading = document.getElementById("container") as HTMLCanvasElement;
@@ -24,7 +26,15 @@ interface DeviceOrientationEventiOS extends DeviceOrientationEvent {
 }
 
 
-function onReady() {
+async function onReady() {
+  var lens = await cameraKit.lensRepository.loadLens(
+    '268dd9cd-5211-4658-8008-ab2db3762f46',
+    '6f0b1073-8317-460d-945e-9a389d66ca91'
+  );
+
+  lens.cameraFacingPreference = 2; //back camera
+  
+  await session.applyLens(lens, {launchParams:{"isWeb":"true"}});
   loading.style.display = 'none'
   liveRenderTarget.style.display = 'block'
 }
@@ -80,9 +90,9 @@ async function checkAccel() {
     js: 'https://snap-ck-ms-teams.s3.amazonaws.com/lc/LensCoreWebAssembly.js',
   }
 
-  const cameraKit = await bootstrapCameraKit(config, extensions);
+  cameraKit = await bootstrapCameraKit(config, extensions);
 
-  const session = await cameraKit.createSession({ liveRenderTarget });
+  session = await cameraKit.createSession({ liveRenderTarget });
   const stream = await navigator.mediaDevices.getUserMedia({
     video: {
       facingMode: "environment",
@@ -115,14 +125,7 @@ async function checkAccel() {
     
     
   } else {
-    var lens = await cameraKit.lensRepository.loadLens(
-      '268dd9cd-5211-4658-8008-ab2db3762f46',
-      '6f0b1073-8317-460d-945e-9a389d66ca91'
-    );
-  
-    lens.cameraFacingPreference = 2; //back camera
     
-    await session.applyLens(lens, {launchParams:{"isWeb":"true"}});
 
     //let live = session.output.live;
     //let ratio = live.width/live.height;
@@ -136,7 +139,6 @@ async function checkAccel() {
     await source.setRenderSize(width, height);
   };
 
-  window.addEventListener("click", checkAccel)
 
   if (!usePush) {
     window.addEventListener('resize', onResize, true);
@@ -146,6 +148,7 @@ async function checkAccel() {
     
   }
   
+  window.addEventListener("click", checkAccel)
 
   //console.log(liveRenderTarget.width , liveRenderTarget.height)
   //await source.setRenderSize(liveRenderTarget.width , liveRenderTarget.height);
