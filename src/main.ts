@@ -85,10 +85,10 @@ async function checkAccel() {
     apiToken: 'eyJhbGciOiJIUzI1NiIsImtpZCI6IkNhbnZhc1MyU0hNQUNQcm9kIiwidHlwIjoiSldUIn0.eyJhdWQiOiJjYW52YXMtY2FudmFzYXBpIiwiaXNzIjoiY2FudmFzLXMyc3Rva2VuIiwibmJmIjoxNzEzODEwMjI2LCJzdWIiOiJlMGRkMGUxYy0xMTkyLTRlZjctODAwNi00YmExNmE0NTY2ZTV-UFJPRFVDVElPTn45ODI3ODhmMy0yYWNlLTQ5YWUtODkzMi0yYzYwZDU1NmNkMDYifQ.H8FhJ0mOHmbmB0CqgOhyxuQM5Lp4Md5BfbjS_B9DpcE'
   }
 
-  config.lensCoreOverrideUrls = {
-    wasm: 'https://snap-ck-ms-teams.s3.amazonaws.com/lc/LensCoreWebAssembly.wasm',
-    js: 'https://snap-ck-ms-teams.s3.amazonaws.com/lc/LensCoreWebAssembly.js',
-  }
+  // config.lensCoreOverrideUrls = {
+  //   wasm: 'https://snap-ck-ms-teams.s3.amazonaws.com/lc/LensCoreWebAssembly.wasm',
+  //   js: 'https://snap-ck-ms-teams.s3.amazonaws.com/lc/LensCoreWebAssembly.js',
+  // }
 
   cameraKit = await bootstrapCameraKit(config, extensions);
 
